@@ -1,0 +1,15 @@
+type Query {
+    issues: [Issue]
+}
+
+type Issue {
+    id: ID
+    description: String
+    assigneeId: ID
+    author: Author!
+}
+
+type Author{
+    id: ID
+    name: String
+}

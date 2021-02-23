@@ -1,0 +1,35 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'com.atlassian'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url "http://dl.bintray.com/andimarek/graphql-java" }
+    maven { url "http://dl.bintray.com/andimarek/nadel" }
+}
+
+ext {
+    nadelVersion = '2019-11-19T06-06-03-6627ad2'
+}
+
+dependencies {
+    implementation "com.graphql-java:nadel:${nadelVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation "com.google.guava:guava:28.1-jre"
+    implementation 'org.asynchttpclient:async-http-client:2.10.4'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+test {
+    useJUnitPlatform()
+}
